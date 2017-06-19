@@ -1,0 +1,58 @@
+{
+  "name": "midsummer_app",
+  "version": "0.0.1",
+  "description": "Simple Cordova App",
+  "port": 3017,
+  "liveReloadPort": 3018,
+  "main": "www/js/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Padamieo/xxxx.git"
+  },
+  "author": "Michaél Adam Lockwood",
+  "license": " ",
+  "browser": {
+    "handlebars" : "./node_modules/handlebars/dist/handlebars.js",
+    "dateMath": "./node_modules/date-math/lib/index.js",
+    "ui": "./src/js/ui.js",
+    "templates": "./temp/templates.js"
+  },
+  "browserify-shim": {
+    "dateMath": {
+      "exports": "date-math"
+    },
+    "jquery": {
+      "exports": "jquery"
+    },
+    "handlebars": {
+      "exports": "handlebars"
+    }
+  },
+  "dependencies": {
+    "date-math": "0.0.1",
+    "grunt": "^0.4.5",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-uglify": "^1.0.0",
+    "handlebars": "^4.0.6",
+    "jquery": "^3.2.1",
+    "load-grunt-tasks": "^3.5.0"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "browserify-shim": "^3.8.12",
+    "grunt-browserify": "^5.0.0",
+    "grunt-cache-bust": "^1.1.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-connect": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-contrib-less": "*",
+    "grunt-karma": "^2.0.0",
+    "grunt-open": "^0.2.3",
+    "grunt-run": "^0.6.0",
+    "grunt-contrib-handlebars": "^1.0.0",
+    "lodash": "^4.6.1"
+  }
+}
