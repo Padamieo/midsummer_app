@@ -43,7 +43,12 @@ module.exports = function (grunt) {
       less:{
         files: 'src/less/*.less',
         tasks: ['less']
+      },
+      handlebars:{
+        files: 'src/templates/*.hbs',
+        tasks: ['handlebars']
       }
+
     },
 
     browserify:{

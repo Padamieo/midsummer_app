@@ -7,8 +7,21 @@ body{
 }
 
 .container{
-  border: 1px solid red;
   margin: 2%;
+  @media screen and (min-width: 600px) {
+    max-width: 600px;
+    margin: 2% auto;
+  }
+}
+
+h1, h2, h3{
+  &.first{
+    color: #05FB92;
+  }
+  &.first{
+    color: #05FB92;
+  }
+
 }
 
 p{
@@ -31,16 +44,19 @@ p{
 }
 
 .submit{
-  background: #68074E;
+  background: #BEEF97;
   display: block;
   position: relative;
   margin: auto;
-  font-size: 1em;
-  color: #fff;
-  padding: 8px 8%;
+  font-size: 2em;
+  color: #0D3441;
+  padding: 10px;
   border: none;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 55px 0px;
   &:hover{
-
+    background: lighten(#BEEF97, 10%);;
   }
 }
 

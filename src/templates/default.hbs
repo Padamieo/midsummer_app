@@ -1,1 +1,15 @@
-<p>hello i am a template</p>
+
+{{#if page}}
+  <h2>{{page}}</h2>
+{{/if}}
+
+{{#input}}
+  <p>
+    <label>{{title}}</label>
+    <input class="input" type="number" pattern="[0-9]" name="{{title}}">
+  </p>
+{{/input}}
+
+{{#if submit}}
+  <input type="submit" class="submit" data-rel="{{rel}}" title="update">
+{{/if}}

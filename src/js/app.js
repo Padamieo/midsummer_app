@@ -35,9 +35,8 @@ $( document ).ready(function() {
       //arrText.push($(this).val());
       console.log( value );
     });
-
-    ui.create();
-
   });
+
+  ui.init();
 
 });
