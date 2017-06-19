@@ -1,15 +1,29 @@
 
 {{#if page}}
-  <h2>{{page}}</h2>
+  <h2 class="h{{rel}}" >{{page}}</h2>
 {{/if}}
 
-{{#input}}
+{{#inputs}}
   <p>
     <label>{{title}}</label>
-    <input class="input" type="number" pattern="[0-9]" name="{{title}}">
+    <input class="input" type="number" pattern="[0-9]" name="{{title}}" value="{{value}}">
   </p>
-{{/input}}
+{{/inputs}}
 
-{{#if submit}}
-  <input type="submit" class="submit" data-rel="{{rel}}" title="update">
-{{/if}}
+<div class="menu">
+  {{#if prev}}
+    <input type="submit" class="btn page" data-rel="{{rel}}" data-page="prev" value="prev">
+  {{/if}}
+
+  {{#if save}}
+    <input type="submit" class="btn submit" data-rel="{{rel}}" value="save">
+  {{/if}}
+
+  {{#if next}}
+    <input type="submit" class="btn page" data-rel="{{rel}}" data-page="next" value="next">
+  {{/if}}
+
+  {{#if results}}
+    <input type="submit" class="btn results" value="results">
+  {{/if}}
+</div>

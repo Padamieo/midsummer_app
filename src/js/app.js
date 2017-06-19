@@ -12,7 +12,7 @@ function start_game(){
   var _ = require('lodash');
 
 }
-
+var _ = require('lodash');
 var Dates = require('dateMath');
 $ = require("jquery");
 var ui = require("ui");
@@ -29,14 +29,36 @@ $( document ).ready(function() {
   // console.log( next );
 
   $(document).on('click', '.submit', function() {
-    var arrText = new Array();
+
+    var task = $( this ).data('rel');
+
+    var data = new Array();
     $( '.input' ).each(function(){
-      var value = $(this).val();
-      //arrText.push($(this).val());
-      console.log( value );
+      var value = parseInt($(this).val(), 10);
+      var title = $(this).attr("name");
+      var obj = {title: title, value: value };
+      data.push( obj );
     });
+
+    var storeName = ui.store_term+task;
+    ui.processANDStore( storeName, data );
+
   });
 
-  ui.init();
+  $(document).on('click', '.page', function() {
+    var task = $( this ).data('rel');
+    var destination = $( this ).data('page');
+    if(destination == 'next'){
+      ui.changePage( task+1 );
+    }
+    if(destination == 'prev'){
+      ui.changePage( task-1 );
+    }
+  });
+
+  ui.build();
+  // ui.setStore( 'pancakes', 112233 );
+  // var b = ui.getStore( 'pancakes' );
+  // console.log( b );
 
 });

@@ -15,13 +15,15 @@ body{
 }
 
 h1, h2, h3{
-  &.first{
+  &.h1{
     color: #05FB92;
   }
-  &.first{
-    color: #05FB92;
+  &.h2{
+    color: lighten(#68074E, 25%);
   }
-
+  &.h3{
+    color: lighten(#0D3441, 40%);
+  }
 }
 
 p{
@@ -43,21 +45,33 @@ p{
   }
 }
 
-.submit{
-  background: #BEEF97;
+.menu{
+  display: flex;
+}
+
+.btn{
   display: block;
   position: relative;
-  margin: auto;
   font-size: 2em;
   color: #0D3441;
-  padding: 10px;
   border: none;
   box-sizing: border-box;
-  width: 100%;
-  margin: 55px 0px;
-  &:hover{
-    background: lighten(#BEEF97, 10%);;
+  padding: 10px 30px;
+  margin: 0px;
+  margin-right: 4px;
+  flex-grow: 1;
+
+  &:last-child{
+    margin-right: 0px;
   }
+
+  &.submit{
+    background: #BEEF97;
+    &:hover{
+      background: lighten(#BEEF97, 10%);
+    }
+  }
+
 }
 
 //http://www.colourlovers.com/pattern/5624466/Substantial_Beauty

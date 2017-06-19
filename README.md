@@ -20,7 +20,6 @@ To run and develop you will need to have the following on your system.
 Run the following commands from the repo's root directory:
 
 1. npm install
-2. bower install
 3. grunt Build
 4. cordova platform add android
 

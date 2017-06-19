@@ -53,12 +53,7 @@ module.exports = function (grunt) {
 
     browserify:{
       app:{
-        src: [
-          '<%= project.src %>/app.js',
-          //'node_modules/handlebars/dist/handlebars.js',
-          //'temp/templates.js',
-          //(productionBuild ? '' : './helpers/livereload.js' )
-        ], // '<%= project.src %>/app.js',
+        src: [ '<%= project.src %>/app.js' ],
         dest: '<%= project.bundle %>',
         options:{
           transform: ['browserify-shim'],
@@ -140,7 +135,7 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('default', [
-    'clean',
+    'handlebars',
     'browserify',
     'less',
     'copy:html',
@@ -149,7 +144,7 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('build', [
-    'clean',
+    'handlebars',
     'browserify',
     'less',
     'copy:html',
@@ -157,8 +152,8 @@ module.exports = function (grunt) {
     'uglify'
   ]);
 
-  grunt.registerTask('test',[
-    'handlebars'
+  grunt.registerTask('clean',[
+    'clean'
   ]);
 
   grunt.registerTask('serve',[
