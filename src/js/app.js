@@ -46,8 +46,8 @@ $( document ).ready(function() {
   });
 
   $(document).on('click', '.page', function() {
-    var task = $( this ).data('rel');
-    var destination = $( this ).data('page');
+    var task = $( this ).data( 'rel' );
+    var destination = $( this ).data( 'page' );
     if(destination == 'next'){
       ui.changePage( task+1 );
     }
@@ -57,8 +57,5 @@ $( document ).ready(function() {
   });
 
   ui.build();
-  // ui.setStore( 'pancakes', 112233 );
-  // var b = ui.getStore( 'pancakes' );
-  // console.log( b );
 
 });

@@ -1,0 +1,46 @@
+
+{{#if page}}
+  <h2 class="h{{rel}}" >{{page}}</h2>
+{{/if}}
+
+<div class="all">
+  <h3 class="center" >The Balance</h3>
+  <div class="balance">
+    <p>Light {{light}}<span>{{dark}} Dark</span></p>
+    <div class="barhold">
+      <div class="bar" style="width:{{percentage}}%"></div>
+    </div>
+  </div>
+
+  <h3 class="center" >Houses</h3>
+  <div class="houses">
+    <p>
+      <span style="width:{{houses.hearts}}%" >Hearts</span>
+      <span style="width:{{houses.clubs}}%" >Clubs</span>
+      <span style="width:{{houses.diamonds}}%" >Diamonds</span>
+      <span style="width:{{houses.spades}}%" >Spades</span>
+    </p>
+    <div class="barhold">
+      <div class="bar" style="width:{{houses.hearts}}%"></div>
+      <div class="bar" style="width:{{houses.clubs}}%"></div>
+      <div class="bar" style="width:{{houses.diamonds}}%"></div>
+      <div class="bar" style="width:{{houses.spades}}%"></div>
+
+    </div>
+  </div>
+
+</div>
+
+{{#results}}
+  <div class="data">
+    <h3>{{name}}<span>{{title}}</span></h3>
+    <p>points: {{total}}</p>
+
+  </div>
+{{/results}}
+
+<div class="menu">
+  {{#if prev}}
+    <input type="submit" class="btn page" data-rel="{{rel}}" data-page="prev" value="Back">
+  {{/if}}
+</div>

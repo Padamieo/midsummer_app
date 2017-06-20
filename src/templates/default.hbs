@@ -5,7 +5,7 @@
 
 {{#inputs}}
   <p>
-    <label>{{title}}</label>
+    <label>{{title}} - {{name}}</label>
     <input class="input" type="number" pattern="[0-9]" name="{{title}}" value="{{value}}">
   </p>
 {{/inputs}}
@@ -24,6 +24,6 @@
   {{/if}}
 
   {{#if results}}
-    <input type="submit" class="btn results" value="results">
+    <input type="submit" class="btn results page" data-rel="{{rel}}" data-page="next" value="results">
   {{/if}}
 </div>

@@ -7,14 +7,16 @@ body{
 }
 
 .container{
-  margin: 2%;
+  padding-left: 3%;
+  padding-right: 3%;
+  margin: auto;
   @media screen and (min-width: 600px) {
     max-width: 600px;
-    margin: 2% auto;
   }
+  padding-bottom: 120px;
 }
 
-h1, h2, h3{
+h1, h2{
   &.h1{
     color: #05FB92;
   }
@@ -22,8 +24,17 @@ h1, h2, h3{
     color: lighten(#68074E, 25%);
   }
   &.h3{
-    color: lighten(#0D3441, 40%);
+    color: lighten(#0D3441, 50%);
   }
+
+  text-align: center;
+  font-size: 3.3em;
+  font-weight: normal;
+  margin: 1vw 0;
+}
+
+.center{
+  text-align: center;
 }
 
 p{
@@ -47,6 +58,15 @@ p{
 
 .menu{
   display: flex;
+
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding: 20px;
+  width: 100%;
+  background: fade(#0D3441, 80%);
+  box-sizing: border-box;
+  border-top: 1px solid #fff;
 }
 
 .btn{
@@ -61,6 +81,10 @@ p{
   margin-right: 4px;
   flex-grow: 1;
 
+  &:hover{
+    background: lighten(#68074E, 70%);
+  }
+
   &:last-child{
     margin-right: 0px;
   }
@@ -72,6 +96,93 @@ p{
     }
   }
 
+  &.results{
+    background: lighten(#0D3441, 50%);
+    &:hover{
+      background: lighten(#0D3441, 70%);
+    }
+  }
+
+}
+
+.barhold{
+  height: 42px;
+  .bar{
+    height: 42px;
+    float: left;
+    display: inline-block;
+  }
+}
+
+.all{
+  border-bottom: 1px solid #fff;
+  padding-bottom: 50px;
+  .balance{
+    .barhold{
+      background: #000;
+      .bar{
+        background: #fff;
+      }
+    }
+
+    p{
+      margin: 0px;
+      span{
+        float: right;
+      }
+    }
+  }
+
+  .houses{
+    p{
+      display: flex;
+      span{
+        display: block;
+        position: relative;
+        display: inline-block;
+        text-align: center;
+        &:nth-child(1){
+          min-width: 70px;
+        }
+        &:nth-child(2){
+          min-width: 70px;
+        }
+        &:nth-child(3){
+          min-width: 102px;
+        }
+        &:nth-child(3){
+          min-width: 62px;
+        }
+      }
+    }
+    .barhold{
+      display: flex;
+      background: #6b3f8e;
+      .bar{
+        &:nth-child(1){
+          background: #933e3e;
+        }
+        &:nth-child(2){
+          background: #427534;
+        }
+        &:nth-child(3){
+          background: #3f5091;
+        }
+      }
+    }
+  }
+
+}
+
+.data{
+  border-bottom: 1px solid #fff;
+  h3{
+    clear: both;
+    min-height: 1px;
+    span{
+      float: right;
+    }
+  }
 }
 
 //http://www.colourlovers.com/pattern/5624466/Substantial_Beauty
