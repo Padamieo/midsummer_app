@@ -1,6 +1,6 @@
 var ui = {
   store_term: 'task_',
-  page: 3,
+  page: 1,
   attending: 0,
   total: 0,
   light: {points:0, tally:0},
