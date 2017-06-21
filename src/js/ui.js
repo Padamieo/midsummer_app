@@ -1,6 +1,6 @@
 var ui = {
   store_term: 'task_',
-  page: 1,
+  page: 3,
   attending: 0,
   total: 0,
   light: {points:0, tally:0},
@@ -23,29 +23,44 @@ ui.build = function () {
       var results = this.processResults();
       var title = this.getPageTitle( currentPage );
 
-      var total_tally = ui.light.tally+ui.dark.tally;
-      var per_light = (total_tally/ui.light.tally);
-      var per_dark = (total_tally/ui.dark.tally);
-      var light_points = (ui.light.points*per_light);
-      var dark_points = (ui.dark.points*per_dark);
+      var light_tally = ( ui.light.tally ? ui.light.tally : 0 );
+      var dark_tally = ( ui.dark.tally ? ui.dark.tally : 0 );
+
+      var total_tally = light_tally+dark_tally;
+      var per_light = (total_tally/light_tally);
+      var per_dark = (total_tally/dark_tally);
+
+      var light_points = (ui.light.points*per_light) || 0;
+      var dark_points = (ui.dark.points*per_dark) || 0;
+
       var total = light_points+dark_points;
-      var per = (total/100);
-      var percentage = dark_points/per;
+      var percentage = light_points/(total/100);
+
 
       var per_hearts = (total_tally/ui.hearts.tally);
-      var per_diamonds = (total_tally/ui.diamonds.tally);
-      var per_clubs = (total_tally/ui.clubs.tally);
-      var per_spades = (total_tally/ui.spades.tally);
+      var heart_points = (ui.hearts.points*per_hearts) || 0;
 
-      var hearts = ui.hearts.points*per_hearts;
-      var diamonds = ui.diamonds.points*per_diamonds;
-      var clubs = ui.clubs.points*per_clubs;
-      var spades = ui.spades.points*per_spades;
+      var per_diamonds = (total_tally/ui.diamonds.tally);
+      var diamonds_points = (ui.diamonds.points*per_diamonds) || 0;
+
+      var per_clubs = (total_tally/ui.clubs.tally);
+      var clubs_points = (ui.clubs.points*per_clubs) || 0;
+
+      var per_spades = (total_tally/ui.spades.tally);
+      var spades_points = (ui.spades.points*per_spades) || 0;
+
+      var suits_total = heart_points+diamonds_points+clubs_points+spades_points;
+
+      var hearts = heart_points/(suits_total/100);
+      var diamonds = diamonds_points/(suits_total/100);
+      var clubs = clubs_points/(suits_total/100);
+      var spades = spades_points/(suits_total/100);
+
       var houses = {
-        diamonds: ( diamonds !=0 ? diamonds : 1 ),
-        hearts: ( hearts !=0 ? hearts : 1 ),
-        clubs: ( clubs !=0 ? clubs : 1 ),
-        spades: ( spades !=0 ? spades : 1 )
+        diamonds: { per: diamonds, points: ui.diamonds.points, tally: ui.diamonds.tally },
+        hearts: { per: hearts, points: ui.hearts.points, tally: ui.hearts.tally },
+        clubs: { per: clubs, points: ui.clubs.points, tally: ui.clubs.tally },
+        spades: { per: spades, points: ui.spades.points, tally: ui.spades.tally }
       };
 
       var data = {

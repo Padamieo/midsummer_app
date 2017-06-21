@@ -35,7 +35,11 @@ function onDeviceReady(){
 
       var storeName = ui.store_term+task;
       ui.processANDStore( storeName, data );
+      $('.submit').prop('disabled', true);
+    });
 
+    $(document).on('input', '.input', function() {
+      $('.submit').prop('disabled', false);
     });
 
     $(document).on('click', '.page', function() {

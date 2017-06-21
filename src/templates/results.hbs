@@ -19,18 +19,39 @@
   <h3 class="center" >Houses</h3>
   <div class="houses">
     <p>
-      <span style="width:{{houses.hearts}}%" >Hearts</span>
-      <span style="width:{{houses.clubs}}%" >Clubs</span>
-      <span style="width:{{houses.diamonds}}%" >Diamonds</span>
-      <span style="width:{{houses.spades}}%" >Spades</span>
+      {{#if houses.hearts.per}}
+        <span style="width:{{houses.hearts.per}}%" >Hearts</span>
+      {{/if}}
+      {{#if houses.clubs.per}}
+        <span style="width:{{houses.clubs.per}}%" >Clubs</span>
+      {{/if}}
+      {{#if houses.diamonds.per}}
+        <span style="width:{{houses.diamonds.per}}%" >Diamonds</span>
+      {{/if}}
+      {{#if houses.spades.per}}
+        <span style="width:{{houses.spades.per}}%" >Spades</span>
+      {{/if}}
     </p>
     <div class="barhold">
-      <div class="bar" style="width:{{houses.hearts}}%"></div>
-      <div class="bar" style="width:{{houses.clubs}}%"></div>
-      <div class="bar" style="width:{{houses.diamonds}}%"></div>
-      <div class="bar" style="width:{{houses.spades}}%"></div>
-
+      <div class="bar" style="width:{{houses.hearts.per}}%"></div>
+      <div class="bar" style="width:{{houses.clubs.per}}%"></div>
+      <div class="bar" style="width:{{houses.diamonds.per}}%"></div>
+      <div class="bar" style="width:{{houses.spades.per}}%"></div>
     </div>
+    <p>
+      {{#if houses.hearts.per}}
+        <span style="width:{{houses.hearts.per}}%" >({{houses.hearts.points}})/{{houses.hearts.tally}}</span>
+      {{/if}}
+      {{#if houses.clubs.per}}
+        <span style="width:{{houses.clubs.per}}%" >({{houses.clubs.points}})/{{houses.clubs.tally}}</span>
+      {{/if}}
+      {{#if houses.diamonds.per}}
+        <span style="width:{{houses.diamonds.per}}%" >({{houses.diamonds.points}})/{{houses.diamonds.tally}}</span>
+      {{/if}}
+      {{#if houses.spades.per}}
+        <span style="width:{{houses.spades.per}}%" >({{houses.spades.points}})/{{houses.spades.tally}}</span>
+      {{/if}}
+    </p>
   </div>
 
 </div>

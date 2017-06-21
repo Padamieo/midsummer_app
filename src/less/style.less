@@ -178,13 +178,15 @@ p{
     &:hover{
       background: lighten(#BEEF97, 10%);
     }
+    &[disabled]{
+      background: lighten(#0D3441, 50%);
+    }
   }
 
   &.results{
-    background: lighten(#0D3441, 50%);
-    &:hover{
-      background: lighten(#0D3441, 70%);
-    }
+    background: #68074E;
+    color: #fff;
+    border: 1px solid #fff;
   }
 
 }
@@ -226,9 +228,12 @@ p{
         position: relative;
         display: inline-block;
         text-align: center;
+        &:first-child{
+          text-align: right;
+          text-align: left;
+        }
         &:nth-child(1){
           min-width: 70px;
-          text-align: left;
         }
         &:nth-child(2){
           min-width: 70px;
@@ -238,6 +243,8 @@ p{
         }
         &:nth-child(4){
           min-width: 62px;
+        }
+        &:last-child{
           text-align: right;
         }
       }
