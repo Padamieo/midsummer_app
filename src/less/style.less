@@ -6,6 +6,87 @@ body{
   font-size: 1.5em;
 }
 
+@spades: #6b3f8e;
+@hearts: #933e3e;
+@clubs: #427534;
+@diamonds: #3f5091;
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?swk6tl');
+  src:  url('../fonts/icomoon.eot?swk6tl#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?swk6tl') format('truetype'),
+    url('../fonts/icomoon.woff?swk6tl') format('woff'),
+    url('../fonts/icomoon.svg?swk6tl#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-spades:before {
+  content: "\e917";
+}
+.icon-clubs:before {
+  content: "\e918";
+}
+.icon-diamonds:before {
+  content: "\e919";
+}
+.icon-heart:before {
+  content: "\e9da";
+}
+
+.suit{
+  width: 100%;
+  position: absolute;
+  box-sizing: border-box;
+  text-align: center;
+  top: 0;
+  padding: 1.5em;
+  &.d{
+    &:before{
+      font-family: 'icomoon' !important;
+      content: "\e919";
+      color: @diamonds;
+    }
+  }
+  &.h{
+    &:before{
+      font-family: 'icomoon' !important;
+      content: "\e9da";
+      color: @hearts;
+    }
+  }
+  &.c{
+    &:before{
+      font-family: 'icomoon' !important;
+      content: "\e918";
+      color: @clubs;
+    }
+  }
+  &.s{
+    &:before{
+      font-family: 'icomoon' !important;
+      content: "\e917";
+      color: @spades;
+    }
+  }
+}
+
 .container{
   padding-left: 3%;
   padding-right: 3%;
@@ -29,6 +110,9 @@ h1, h2{
 
   text-align: center;
   font-size: 3.3em;
+  @media screen and (max-width: 600px) {
+    font-size: 15vw;
+  }
   font-weight: normal;
   margin: 1vw 0;
 }
@@ -58,7 +142,6 @@ p{
 
 .menu{
   display: flex;
-
   position: fixed;
   left: 0;
   bottom: 0;
@@ -72,7 +155,7 @@ p{
 .btn{
   display: block;
   position: relative;
-  font-size: 2em;
+  font-size: 1em;
   color: #0D3441;
   border: none;
   box-sizing: border-box;
@@ -126,6 +209,7 @@ p{
     }
 
     p{
+      overflow: auto;
       margin: 0px;
       span{
         float: right;
@@ -143,6 +227,7 @@ p{
         text-align: center;
         &:nth-child(1){
           min-width: 70px;
+          text-align: left;
         }
         &:nth-child(2){
           min-width: 70px;
@@ -150,23 +235,24 @@ p{
         &:nth-child(3){
           min-width: 102px;
         }
-        &:nth-child(3){
+        &:nth-child(4){
           min-width: 62px;
+          text-align: right;
         }
       }
     }
     .barhold{
       display: flex;
-      background: #6b3f8e;
+      background: @spades;
       .bar{
         &:nth-child(1){
-          background: #933e3e;
+          background: @hearts;
         }
         &:nth-child(2){
-          background: #427534;
+          background: @clubs;
         }
         &:nth-child(3){
-          background: #3f5091;
+          background: @diamonds;
         }
       }
     }
@@ -176,6 +262,9 @@ p{
 
 .data{
   border-bottom: 1px solid #fff;
+  overflow: auto;
+  display: block;
+  position: relative;
   h3{
     clear: both;
     min-height: 1px;

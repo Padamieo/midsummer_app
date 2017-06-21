@@ -1,13 +1,14 @@
 var ui = {
   store_term: 'task_',
   page: 4,
+  attending: 0,
   total: 0,
-  light: 0,
-  dark: 0,
-  diamonds: 0,
-  clubs: 0,
-  spades: 0,
-  hearts: 0
+  light: {points:0, tally:0},
+  dark: {points:0, tally:0},
+  diamonds: {points:0, tally:0},
+  clubs: {points:0, tally:0},
+  spades: {points:0, tally:0},
+  hearts: {points:0, tally:0}
 };
 
 ui.build = function () {
@@ -22,13 +23,24 @@ ui.build = function () {
       var results = this.processResults();
       var title = this.getPageTitle( currentPage );
 
-      var per = (ui.total/100);
-      var percentage = ui.light/per; //(ui.light/per)*0.95;
+      var total_tally = ui.light.tally+ui.dark.tally;
+      var per_light = (total_tally/ui.light.tally);
+      var per_dark = (total_tally/ui.dark.tally);
+      var light_points = (ui.light.points*per_light);
+      var dark_points = (ui.dark.points*per_dark);
+      var total = light_points+dark_points;
+      var per = (total/100);
+      var percentage = dark_points/per;
 
-      var hearts = ui.hearts/per; //(ui.hearts/per)*1.3;
-      var diamonds = ui.diamonds/per; //(ui.diamonds/per)*0.7;
-      var clubs = ui.clubs/per; //(ui.clubs/per)*1.1;
-      var spades = ui.spades/per;
+      var per_hearts = (total_tally/ui.hearts.tally);
+      var per_diamonds = (total_tally/ui.diamonds.tally);
+      var per_clubs = (total_tally/ui.clubs.tally);
+      var per_spades = (total_tally/ui.spades.tally);
+
+      var hearts = ui.hearts.points*per_hearts;
+      var diamonds = ui.diamonds.points*per_diamonds;
+      var clubs = ui.clubs.points*per_clubs;
+      var spades = ui.spades.points*per_spades;
       var houses = {
         diamonds: ( diamonds !=0 ? diamonds : 1 ),
         hearts: ( hearts !=0 ? hearts : 1 ),
@@ -39,9 +51,10 @@ ui.build = function () {
       var data = {
         page: title,
         results: results,
-        light: ui.light,
-        dark: ui.dark,
+        light: '('+ui.light.points+')/'+ui.light.tally,
+        dark: '('+ui.dark.points+')/'+ui.dark.tally,
         total: ui.total,
+        attending: ui.attending,
         percentage: percentage,
         houses: houses,
         prev: true,
@@ -68,13 +81,26 @@ ui.processResults = function (){
   }
 
   //reset just in case
-  ui.light = 0;
-  ui.dark = 0;
-  ui.diamonds = 0;
-  ui.hearts = 0;
-  ui.clubs = 0;
-  ui.spades = 0;
+  ui.light = {points:0, tally:0};
+  ui.dark = {points:0, tally:0};
+  ui.diamonds = {points:0, tally:0};
+  ui.hearts = {points:0, tally:0};
+  ui.clubs = {points:0, tally:0};
+  ui.spades = {points:0, tally:0};
   ui.total = 0;
+  ui.attending = 0;
+
+  for (var i = raw.length-1; i >= 0; i-- ){
+    var title = raw[i].title;
+    var result_1 = $.grep(array[0], function(e){ return e.title == title; })[0];
+    var result_2 = $.grep(array[1], function(e){ return e.title == title; })[0];
+    var points = result_1.value + result_2.value;
+    if(points <= 0){
+      raw.splice(i,1);
+    }
+  }
+
+  ui.attending = raw.length;
 
   for ( var i = 0; i < raw.length; i++ ) {
     var title = raw[i].title;
@@ -85,20 +111,28 @@ ui.processResults = function (){
     var points = result_1.value + result_2.value;
 
     if( raw[i].suit == 'd' ){
-      ui.light = ui.light + points;
-      ui.diamonds = ui.diamonds + points;
+      ui.light.points = ui.light.points + points;
+      ui.light.tally++;
+      ui.diamonds.points = ui.diamonds.points + points;
+      ui.diamonds.tally++;
     }
     if( raw[i].suit == 'h' ){
-      ui.light = ui.light + points;
-      ui.hearts = ui.hearts + points;
+      ui.light.points = ui.light.points + points;
+      ui.light.tally++;
+      ui.hearts.points = ui.hearts.points + points;
+      ui.hearts.tally++;
     }
     if( raw[i].suit == 'c' ){
-      ui.dark = ui.dark + points;
-      ui.clubs = ui.clubs + points;
+      ui.dark.points = ui.dark.points + points;
+      ui.dark.tally++;
+      ui.clubs.points = ui.clubs.points + points;
+      ui.clubs.tally++;
     }
     if( raw[i].suit == 's' ){
-      ui.dark = ui.dark + points;
-      ui.spades = ui.spades + points;
+      ui.dark.points = ui.dark.points + points;
+      ui.dark.tally++;
+      ui.spades.points = ui.spades.points + points;
+      ui.spades.tally++;
     }
 
     ui.total = ui.total + points;

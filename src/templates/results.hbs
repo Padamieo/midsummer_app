@@ -4,6 +4,10 @@
 {{/if}}
 
 <div class="all">
+  <h3 class="center" >The Basics</h3>
+  <p>{{attending}} Gods Attended</p>
+  <p>{{total}} Tasks Achieved</p>
+
   <h3 class="center" >The Balance</h3>
   <div class="balance">
     <p>Light {{light}}<span>{{dark}} Dark</span></p>
@@ -33,9 +37,8 @@
 
 {{#results}}
   <div class="data">
-    <h3>{{name}}<span>{{title}}</span></h3>
+    <h3>{{name}}<span>{{title}}</span></h3><div class="suit {{suit}}"></div>
     <p>points: {{total}}</p>
-
   </div>
 {{/results}}
 
